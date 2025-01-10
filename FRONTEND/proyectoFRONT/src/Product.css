@@ -1,0 +1,51 @@
+.card {
+    background-color: #1e1e4c; 
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 300px;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #706e68; /* Color dorado */
+}
+
+.card img {
+    height: 200px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.card p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #8eedfc; /* Naranja vibrante */
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #b5f9ff; /* Fondo claro para contraste */
+}
+
+.container h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #7c5050; /* Texto gris oscuro */
+}
