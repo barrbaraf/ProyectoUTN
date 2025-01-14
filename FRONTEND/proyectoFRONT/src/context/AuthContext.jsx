@@ -9,6 +9,7 @@ export const AuthProvider =({children})=>{
     })
 
     useEffect (()=>{
+        console.log(isLogged)
         localStorage.setItem("isLogged",isLogged)
     },[isLogged])
     return(
