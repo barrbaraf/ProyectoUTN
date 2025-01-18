@@ -12,21 +12,27 @@ const DetalleBlog = ({blog})=> {
     
     return(
         <>
-            <div className="contenedorDetalle">
-                <img src={blog.urlToImage} alt={blog.description} />
-                <div className="datos">
-                    <h2 className="datos">{blog.title}</h2>
-                    <div className="titulo">
-                        <p className="autor">{blog.author}</p>
-                        <p className="fecha">{new Date(blog.publishedAt).toLocaleString("es")}</p>  
+            <div className="Contenedor">
+                <div className="imagen">
+                    <img src={blog.urlToImage} alt={blog.description}/>
                 </div>
-                <p className="descripcion">{blog.content}</p>
                 
-            </div>
-            
-            </div>
-            <div>
-                <button onClick={hanledeClick}>Volver</button>
+                <div className="Datos">
+                    <div className="subdatos">
+                        <h2>{blog.title}</h2>
+                       
+                        <p className="descripcion">{blog.content}</p>
+                        
+                        <p className="autor">{blog.author}</p>
+  
+                    </div>
+                <p className="fecha">{new Date(blog.publishedAt).toLocaleString("es")}</p>
+
+                </div>
+                <div>
+                <button className="botonVolver" onClick={hanledeClick}>Volver</button>
+                </div>  
+               
             </div>
         </>  
         

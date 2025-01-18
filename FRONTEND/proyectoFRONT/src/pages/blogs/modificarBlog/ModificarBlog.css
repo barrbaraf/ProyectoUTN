@@ -1,4 +1,4 @@
-.contenedorCrear{
+.contenedorModificar{
     display: flex;
     flex-direction: column;
     height: 500px;
@@ -54,7 +54,7 @@
 }
 
 
-.botones{
+.boton{
     display: flex;
     justify-content: space-around;    
     gap: 10px;

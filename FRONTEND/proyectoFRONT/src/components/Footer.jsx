@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import "./FooterHeader.css"
+import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import "./Footer.css";
+
 const Footer = () => {
     return (
         <footer className="footer">
-            <div className="footer-section">
-                <div className="sobre-nosotros">
+            <div className="sobre-nosotros">
                     <h3>Sobre nosotros</h3>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -15,7 +15,9 @@ const Footer = () => {
                         aspernatur.
                     </p>
                 </div>
-                <div className="enlaces">
+
+            <div className="contenedorFooter">
+                <div className="Enlaces">
                     <h3>Enlaces</h3>
                     <ul>
                         <li>
@@ -26,6 +28,7 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
+
                 <div className="redessociales">
                     <h3>Redes Sociales</h3>
                     <ul>
@@ -38,6 +41,11 @@ const Footer = () => {
                             <a href="">
                                 <FontAwesomeIcon icon={faFacebook} className="icono" />
                             </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <FontAwesomeIcon icon={faInstagram} className="icono" />
+                             </a>
                         </li>
                     </ul>
                 </div>

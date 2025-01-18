@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
-import "./FooterHeader.css"
+import "./Header.css"
 const links = [{ to: "/", label: "Inicio" }];
 
 const loggedLinks = [
@@ -20,12 +20,16 @@ const Header = () => {
 
     return (
         <nav className="header">
-            <div className="nav-links">
+            <div className="logo-container">
+                <img src="Logo.jpg" alt="" className="logo"/>
                 {links.map((link) => (
                     <NavLink key={link.to} to={link.to}>
                         {link.label}
                     </NavLink>
                 ))}
+            </div>
+              <div className="nav-links">
+                
             </div>
             <div className="auth-links">
                 {isLogged &&

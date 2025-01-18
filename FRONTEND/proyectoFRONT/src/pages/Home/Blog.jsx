@@ -1,26 +1,34 @@
-import "./Blog.css"
-import { useNavigate } from "react-router-dom"
+import "./Blog.css";
+import { useNavigate } from "react-router-dom";
 
-const Blog = ({blog})=> {
-    const navigate=useNavigate()
+const Blog = ({ blog }) => {
+    const navigate = useNavigate();
 
-    const hanledeClick =()=> {
-        navigate(`/blogs/${blog.source.id}`)
+    const handleClick = () => {
+        navigate(`/blogs/${blog.source.id}`);
+    };
 
-    }
-    return(
-        <div className="contenedorBlog" onClick={hanledeClick}>
-            <img src={blog.urlToImage} alt={blog.description} />
+    return (
+        <div className="contenedorBlog" onClick={handleClick}>
+            
+            <img src={blog.urlToImage} alt={blog.description} className="blog-image" />
+            
             <div className="datos">
-                <h2 className="datos">{blog.title}</h2>
-                <div className="titulo">
+                <div className="subdatos">
+                    <h2>{blog.title}</h2>
+                    
+                    <p className="descripcion">{blog.description}</p>
+                    
                     <p className="autor">{blog.author}</p>
-                    <p className="fecha">{new Date(blog.publishedAt).toLocaleString("es")}</p>  
                 </div>
-                <p className="descripcion">{blog.description}</p>
+                
+            <p className="fecha">
+                {new Date(blog.publishedAt).toLocaleString("es")}
+                </p>
                 
             </div>
         </div>
-    )
-}
-export default Blog
+    );
+};
+
+export default Blog;

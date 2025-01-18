@@ -1,0 +1,80 @@
+/* Contenedor general */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #f4f4f9; /* Fondo suave */
+}
+
+/* Estilos de la tarjeta */
+.login-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Título de la tarjeta */
+h2 {
+    font-size: 24px;
+    color: #041423;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los labels */
+label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Estilo para los inputs */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #041423;
+    outline: none;
+}
+
+/* Estilo para el botón de login */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #041423;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #333;
+}
+
+/* Mensajes de error */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}

@@ -1,0 +1,20 @@
+.contenedor{
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+}
+.contenedorBlogs{
+  display: flex;
+  flex-direction: row;
+  margin: 0px 0px 20px 20px;
+}
+
+.contenedorBlogs .img{
+  height: 10px;
+  width: 40px;
+}
+
+.contenedorBlogs .imagen{
+  width: 10px;
+  height: 40px;
+}

@@ -38,6 +38,7 @@ function App() {
       <Route path="/perfil" element={<Perfil/>}></Route>
 
     </Routes>
+    
     <Footer/>
     
     </BrowserRouter>
