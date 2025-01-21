@@ -56,6 +56,7 @@ export const createVehiculoController = async (req, res) => {
     const { matricula, color } = req.body;
     if (!matricula || !color) {
       res.status(400).json({ status: "error", error: "Faltan datos", data: {} });
+      console.log("entra aqui")
     }
     const vehiculo = await createVehiculo({ matricula, color });
 

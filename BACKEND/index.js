@@ -1,8 +1,9 @@
 import express from "express";
 import routerVehiculos from "./router/routerVehiculo.js";
 import env from "dotenv";
-import mongoose from "mongoose";
-import routerContenido from "./router/routerContenido.js";
+import mongoose from "mongoose"
+import routerBlogs from "./router/routerBlogs.js";
+
 
 env.config();
 const app = express();
@@ -10,8 +11,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/vehiculos", routerVehiculos);
-// app.use("/user", routerVehiculos)
-app.use("/contenido", routerContenido);
+app.use("/user", routerVehiculos)
+app.use("/blogs", routerBlogs)
 
 app.use((req, res) => {
   res.status(404).json({ error: "error 404 entro aqui" });
