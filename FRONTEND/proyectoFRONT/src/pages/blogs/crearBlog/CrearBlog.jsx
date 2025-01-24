@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./CrearBlog.css"
+const backurl= import.meta.env.VITE_BACK_URL;
+
+
 const CrearBlog = () => {
     const navigate = useNavigate();
     const [titulo, setTitulo]=useState("")
@@ -12,30 +15,37 @@ const CrearBlog = () => {
         console.log(titulo,descripcion,contenido,imagen);
     }, [titulo,descripcion,contenido,imagen]);
 
-    const handleCrear = (e) => {
+    const handleCrear = async (e) => {
         e.preventDefault();
-        navigate("/misblogs");
-
+       
         const blog ={
-            title: titulo,
-            description: descripcion,
-            content: contenido,
-            urlToImage: imagen,
+            titulo: titulo,
+            descripcion: descripcion,
+            contenido: contenido,
+            imagen: imagen,
         }
-        console.log(blog)
         
+        await fetchback(blog)
+        console.log(blog)
+        navigate("/misblogs");
+
     };
 
-    const handleVolver = (e) => {
+    
+    
+    const handleVolver = () => {
         navigate("/misblogs");
     };
-    const fetchback = async(blog)=> {
-        const response = await fetch (`${backurl}blogs/`,{method: "POST",
+    
+    
+    const fetchback= async(blog) =>{
+        const response = await fetch( `${backurl}blogs/`,{
+            method:"POST",
             body: JSON.stringify(blog),
-            headers: {"Content-Type": "application/json"},
+            headers:{"Content-Type":"application/json"},
         });
-        const data= await response.json();
-        console.log(data)
+        const data = await response.json();
+        console.log(data);
     }
 
     return (
@@ -68,7 +78,7 @@ const CrearBlog = () => {
                     
                     <div className="imagenForm">
                         <label htmlFor="imagen">Imagen</label>    
-                        <input type="file" id="imagen" onChange={(e)=> setImagen(e.target.value)} />
+                        <input type="text" id="imagen" onChange={(e)=> setImagen(e.target.value)} />
                     </div>
 
                 </div>

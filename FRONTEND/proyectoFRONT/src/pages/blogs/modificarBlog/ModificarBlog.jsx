@@ -3,18 +3,7 @@ import { useParams } from "react-router-dom";
 import "./ModificarBlog.css"
 
 const ModificarBlog =()=>{
-    const {idblog}= useParams()
-
-    const fetchback=async()=>{
-        const response =await fetch(`http://localhost:3000/blogs/${idblog}`);
-        const data = await response.json();
-        setBlog(...data.data)
-        console.log(...data.data);
-    }
-    const [titulo, setTitulo]=useState("")
-    const [descripcion, setDescripcion]=useState("")
-    const [contenido, setContenido]=useState("")
-    const [imagen, setImagen]=useState("")
+    
 
     return(
             <div className="contenedorModificar">

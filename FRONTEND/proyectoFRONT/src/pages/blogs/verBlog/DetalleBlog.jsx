@@ -1,6 +1,7 @@
 import "./VerBlog.css"
 import { useNavigate } from "react-router-dom"
 
+
 const DetalleBlog = ({blog})=> {
     const navigate=useNavigate()
 
@@ -14,19 +15,19 @@ const DetalleBlog = ({blog})=> {
         <>
             <div className="Contenedor">
                 <div className="imagen">
-                    <img src={blog.urlToImage} alt={blog.description}/>
+                    <img src={blog.imagen} alt={blog.descripcion}/>
                 </div>
                 
                 <div className="Datos">
                     <div className="subdatos">
-                        <h2>{blog.title}</h2>
+                        <h2>{blog.titulo}</h2>
                        
-                        <p className="descripcion">{blog.content}</p>
+                        <p className="descripcion">{blog.contenido}</p>
                         
-                        <p className="autor">{blog.author}</p>
+                        <p className="autor">{blog.autor || "autor por defecto"}</p>
   
                     </div>
-                <p className="fecha">{new Date(blog.publishedAt).toLocaleString("es")}</p>
+                <p className="fecha">{new Date(blog.fechaPublicacion).toLocaleString("es")}</p>
 
                 </div>
                 <div>

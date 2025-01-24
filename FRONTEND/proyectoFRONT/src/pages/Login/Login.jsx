@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
+import "./Login.css"
 
 const Login = () => {
     const navigate = useNavigate()
@@ -26,9 +27,10 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <div className="login-card">
-                <h2>Iniciar Sesión</h2>
-                <form onSubmit={handleLogin}>
+            
+                
+                <form className="formulario" onSubmit={handleLogin}>
+                    <h2>Iniciar Sesión</h2>
                     <label htmlFor="user">Usuario</label>
                     <input
                         type="text"
@@ -48,7 +50,7 @@ const Login = () => {
                     {error && <div className="error-message">{error}</div>}
                     <button type="submit">Iniciar Sesión</button>
                 </form>
-            </div>
+           
         </div>
     )
 }

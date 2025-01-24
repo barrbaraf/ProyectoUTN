@@ -2,7 +2,7 @@ import Blog from "../model/modelBlog.js"
 import crypto from "crypto";
 
 export const getBlogs =async()=>{
-    const blogs = await Blog.find()
+    const blogs = await Blog.find({isHabilitado: true})
     return blogs
 
 }

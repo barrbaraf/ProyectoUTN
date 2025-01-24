@@ -1,17 +1,28 @@
 import { useParams } from "react-router-dom"
 import { useState,useEffect} from "react"
 import DetalleBlog from "./DetalleBlog"
-import { newsMock } from "../../../mocks/newsMock"
+
 
 
 
 const VerBlog = ()=>{
     const {idblog}=useParams()
 
-    const [blogs, serBlogs]= useState(newsMock)
+    const [blog,setBlog]= useState({})
 
-    const blog = blogs[idblog-1]
-    console.log(blog)
+    useEffect(()=>{
+        const fetchback= async() =>{
+            const response = await fetch( `http://localhost:3000/blogs/${idblog}`)
+            const data = await response.json();
+            setBlog(data.data)
+            console.log(data.data);
+        }
+
+    fetchback()
+    },[idblog])
+
+    
+    
 
     return(
        <DetalleBlog blog={blog}/>
