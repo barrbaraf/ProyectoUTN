@@ -11,9 +11,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configurar CORS
+
+
+
 app.use(cors({
-  origin: "http://localhost:5173", // Asegúrate de usar la URL de tu frontend
+  origin: [
+    "http://localhost:5173", // Asegúrate de usar la URL de tu frontend
+    "https://proyecto-utn-eta.vercel.app/"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true // Si necesitas enviar cookies o cabeceras personalizadas
 }));
@@ -33,7 +38,7 @@ app.use((req, res) => {
 
 // Conexión a la base de datos
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.VITE_MONGO_URL)
   .then(() => {
     console.log("Conectado a la base de datos");
   })
