@@ -13,7 +13,7 @@ export const getBlog =async(id)=>{
 export const createBlog =async(contenido,titulo,imagen,autor,descripcion)=>{
     const datosBlog={
         
-        id:crypto.randomUUID(),contenido:contenido,titulo:titulo,imagen:imagen,autor,descripcion
+        id:crypto.randomUUID(),contenido:contenido,titulo:titulo,imagen:imagen,descripcion:descripcion,autor
 
     }
     const nuevoBlog = await Blog.create(datosBlog)
@@ -21,18 +21,30 @@ export const createBlog =async(contenido,titulo,imagen,autor,descripcion)=>{
 
 }
 export const updateBlog =async(id,contenido,titulo,imagen,descripcion)=>{
-    const blogActualizado =await Blog.findOneAndUpdate({id},{contenido,titulo,imagen,descripcion})
+    console.log("id buscado", id)
+
+    const blogActualizado =await Blog.findOneAndUpdate({id},{contenido,titulo,imagen,descripcion},{new: true});
+
     if (!blogActualizado){
-        return -1
+        console.log("no se encontro el blog para actualizar")
+        return null
     }else {
+        console.log("blog actualizado bien",blogActualizado);
         return blogActualizado
     }
     } 
 
-export const deleteBlog =async(id)=>{
-    // const blogBorrado = await Blog.findOneAndDelete(id)
-    const blogBorrado = await Blog.findOneAndUpdate({id},{isHabilitado:false})
-    
-    return blogBorrado
 
-}
+
+export const deleteBlog = async (id) => {
+    if (typeof id === "object" && id.id) {
+        id = id.id; // Extrae el UUID si viene en un objeto
+    }
+
+    const blogBorrado = await Blog.findOneAndUpdate(
+        { id: id }, 
+        { isHabilitado: false }
+    );
+
+    return blogBorrado;
+};

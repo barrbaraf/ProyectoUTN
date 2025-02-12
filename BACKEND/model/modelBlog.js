@@ -1,19 +1,19 @@
 import mongoose from "mongoose";
 
 
-const { Schema } = mongoose;
+const blogSchema = new mongoose.Schema(
+  {
+    id: { type: String, required: true, unique: true }, // Cambié "require" a "required"
+    contenido: { type: String, required: true }, // Cambié "require" a "required"
+    titulo: { type: String, required: true }, // Cambié "require" a "required"
+    imagen: { type: String, required: true }, // Cambié "require" a "required"
+    descripcion: { type: String, required: true }, // Cambié "require" a "required"
+    fechaPublicacion: { type: Date, default: new Date() },
+    isHabilitado: { type: Boolean, default: true },
+  },
+  { timestamps: true } // Agregado para tener las fechas de creación y actualización automáticas
+);
 
-const blogSchema= new mongoose.Schema({
-    id: {type: String, require: true, unique:true},
-    contenido: {type: String, require:true},
-    titulo:{type:String, require:true},
-    imagen:{type:String, require:true},
-    //autor:{type:Schema.Types.ObjectId,ref:"autor"},
-    descripcion:{type:String, require:true},
-    fechaPublicacion:{type:Date, default:new Date()},
-    isHabilitado: {type:Boolean, default:true},
-})
+const Blog = mongoose.model("blog", blogSchema);
 
-const Blog= mongoose.model("blog", blogSchema)
-
-export default Blog
+export default Blog;

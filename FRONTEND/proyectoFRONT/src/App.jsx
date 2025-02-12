@@ -31,7 +31,7 @@ function App() {
       <Route path="/blogs/:idblog" element={<VerBlog/>}></Route> 
       <Route path="/crearblog" element={<CrearBlog/>}></Route> 
       <Route path="/misblogs" element={<MyBlog/>}></Route> 
-      <Route path="/modificarblog/:id" element={<ModificarBlog/>}></Route> 
+      <Route path="/modificarblog/:idblog" element={<ModificarBlog/>}></Route> 
 
 
 
