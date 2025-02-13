@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({
   origin: [
     "http://localhost:5173", // Asegúrate de usar la URL de tu frontend
-    "https://proyecto-utn-eta.vercel.app/"
+    "https://proyecto-utn-nvbc.vercel.app/"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true // Si necesitas enviar cookies o cabeceras personalizadas
