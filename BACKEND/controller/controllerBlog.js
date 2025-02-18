@@ -41,13 +41,13 @@ export const createBlogsController=async(req,res)=>{
         const {contenido,titulo,imagen,autor,descripcion}= req.body
         console.log(req.body)
          if(!contenido || !titulo || !imagen || !descripcion){
-          return res.status(401).json({status:"error", message:"faltan datos", data:{}})
+          return res.status(400).json({status:"error", message:"faltan datos", data:{}})
          }
         const nuevoBlog= await createBlog(contenido,titulo,imagen,autor,descripcion)
         if (nuevoBlog){
             return res.status(201).json({status:"sucess", message:"blogs creado", data:nuevoBlog})
         }else {
-            return res.status(400).json({status:"error", message:"no se pudo crear el blog", data:{}})
+            return res.status(500).json({status:"error", message:"Error en el servidor", data:{}})
 
         }
     } catch (error) {
@@ -95,7 +95,7 @@ export const deleteBlogsController= async(req,res)=>{
         if (blogBorrado){
             return res.status(201).json({status:"sucess", message:"blogs borrado con exito", data:blogBorrado})
         }else {
-            return res.status(400).json({status:"error", message:"no se pudo borrar el blog", data:{}})
+            return res.status(400).json({status:"error", message:"Blog no encontrado", data:{}})
 
         }
     } catch (error) {
