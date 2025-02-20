@@ -6,8 +6,11 @@ const links = [{ to: "/", label: "Inicio" }];
 
 const loggedLinks = [
     { to: "/crearblog", label: "Crear un Blog", className: "link-end" },
+    { to: "/crearvehiculo", label: "Publicar Vehiculo", className: "link-end" },
     { to: "/misblogs", label: "Mis Blogs", className: "link-end" },
+    { to: "/misvehiculos", label: "Mis Publicaciones Vehiculos", className: "link-end" },
     { to: "/logout", label: "Cerrar Sesion", className: "link-end" },
+
 ];
 
 const logoutLinks = [

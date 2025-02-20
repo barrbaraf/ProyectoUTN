@@ -7,7 +7,7 @@ const MyBlogs =()=>{
     const [blogs, setBlogs] = useState([])
     
     const fetchback= async() =>{
-        const response = await fetch( `${backurl}blogs`)
+        const response = await fetch(` ${backurl}blogs`)
         const data = await response.json();
         setBlogs(data.data)
         console.log(data.data);
@@ -36,7 +36,7 @@ const MyBlogs =()=>{
     
     return(
         <div>
-            <h1>HOME</h1>
+            <h1>Mis Blogs</h1>
             <div className="contenedorBlogs">
                 {blogs.length>0?(
                     blogs.map((blog)=>(

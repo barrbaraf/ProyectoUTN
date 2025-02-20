@@ -9,10 +9,10 @@ const VerBlog = ()=>{
     const {idblog}=useParams()
 
     const [blog,setBlog]= useState({})
-
+    const backurl = import.meta.env.VITE_BACK_URL;
     useEffect(()=>{
         const fetchback= async() =>{
-            const response = await fetch( `http://localhost:3000/blogs/${idblog}`)
+            const response = await fetch( `${backurl}blogs/${idblog}`)
             const data = await response.json();
             setBlog(data.data)
             console.log(data.data);

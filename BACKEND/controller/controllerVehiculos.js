@@ -9,7 +9,9 @@ import {
 console.log("si entro");
 
 //LLAMADA A TODOS
-export const getVehiculosController = async (req, res) => {
+export const getVehiculosController = async (req, res) => { 
+   console.log("hola")
+
   try {
     const vehiculos = await getVehiculos();
     res.status(200).json({
@@ -27,6 +29,7 @@ export const getVehiculosController = async (req, res) => {
 
 //POR ID
 export const getVehiculoController = async (req, res) => {
+
   try {
     const id = req.params.id;
     const vehiculo = await getVehiculo(id);
@@ -35,13 +38,11 @@ export const getVehiculoController = async (req, res) => {
         .status(400)
         .json({ status: "error", error: "vehiculo no encontrado", data: {} });
     } else {
-      res
-        .status(200)
-        .json({
-          status: "success",
-          msg: "vehiculo  encontrado",
-          data: { vehiculo },
-        });
+      res.status(200).json({
+        status: "success",
+        msg: "vehiculo  encontrado",
+        data: { vehiculo },
+      });
     }
   } catch (error) {
     res
@@ -50,17 +51,28 @@ export const getVehiculoController = async (req, res) => {
   }
 };
 
+
 //NUEVO
 export const createVehiculoController = async (req, res) => {
   try {
-    const { matricula, color } = req.body;
-    if (!matricula || !color) {
-      res.status(400).json({ status: "error", error: "Faltan datos", data: {} });
-      console.log("entra aqui")
+    const { marca, color, imagen, descripcion, autor } = req.body;
+    if (!marca || !color || !imagen || !descripcion || !autor) {
+      res
+        .status(400)
+        .json({ status: "error", error: "Faltan datos", data: {} });
+      console.log("entra aqui");
     }
-    const vehiculo = await createVehiculo({ matricula, color });
+    const vehiculo = await createVehiculo({
+      marca,
+      color,
+      imagen,
+      descripcion,
+      autor,
+    });
 
-    res.status(201).json({ status: "success", msg: "Vehiculo creado", data: { vehiculo } });
+    res
+      .status(201)
+      .json({ status: "success", msg: "Vehiculo creado", data: { vehiculo } });
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: "error", msg: "Error servidor", data: {} });
@@ -70,12 +82,21 @@ export const createVehiculoController = async (req, res) => {
 //ACTUALIZAR
 export const updateVehiculoController = async (req, res) => {
   try {
-    const { matricula, color } = req.body;
+    const { marca, color, imagen, descripcion, autor } = req.body;
     const id = req.params.id;
-    if (!matricula && !color) {
-      res.status(400).json({ status: "error", error: "Faltan datos", data: {} });
+    if (!marca && !color && !imagen && !descripcion && !autor) {
+      res
+        .status(400)
+        .json({ status: "error", error: "Faltan datos", data: {} });
     }
-    const vehiculo = await updateVehiculo({ id, matricula, color });
+    const vehiculo = await updateVehiculo({
+      marca,
+      id,
+      color,
+      imagen,
+      descripcion,
+      autor,
+    });
 
     if (vehiculo == -1) {
       res
@@ -102,13 +123,11 @@ export const deleteVehiculoController = async (req, res) => {
         .status(400)
         .json({ status: "error", error: "vehiculo no encontrado", data: {} });
     } else {
-      res
-        .status(200)
-        .json({
-          status: "success",
-          msj: "Vehiculo eliminado",
-          data: { vehiculo },
-        });
+      res.status(200).json({
+        status: "success",
+        msj: "Vehiculo eliminado",
+        data: { vehiculo },
+      });
     }
   } catch (error) {
     res

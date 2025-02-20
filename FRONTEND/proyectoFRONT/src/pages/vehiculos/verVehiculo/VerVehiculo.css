@@ -1,0 +1,94 @@
+/* Estilo principal de las tarjetas */
+.Contenedor{
+    background-color: #fffffff7; /* Fondo blanco para la tarjeta */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(1, 1, 255, 0.649); /* Sombra suave */
+    overflow: hidden; /* Asegura que los bordes redondeados también recorten el contenido */
+    cursor: pointer; /* Indica que la tarjeta es clickeable */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+    align-items: center;
+    margin: 100px;
+    border: 150px;
+    
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+}
+
+.contenedor:hover {
+    transform: translateY(-5px); /* Levanta ligeramente la tarjeta */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Incrementa la sombra al pasar el cursor */
+}
+
+/* Imagen de la tarjeta */
+.imagen {
+    width: 200px; /* Ancho fijo */
+     /* Alto fijo */
+    object-fit: contain;
+     /* Asegura que la imagen se recorte sin deformarse */
+    border-radius: 8px; /* Opcional: redondea las esquinas */
+    display: block; /* Asegura que no haya espacio debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen si es necesario */
+    display: flex;
+    justify-content: center;
+}
+
+/* Datos dentro de la tarjeta */
+.Datos {
+    display: flex;
+    padding: 20px; /* Espaciado interno */
+    text-align: left;
+    color: #333333; /* Color del texto */
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Título */
+.Datos h2 {
+    font-size: 1.5rem; /* Tamaño del título */
+    font-weight: bold; /* Negrita para resaltar */
+    margin: 0 0 10px; /* Espaciado inferior */
+    color: #041423; /* Color principal del título */
+}
+.subdatos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Espacia autor y fecha a los lados opuestos */
+    font-size: 0.9rem; /* Tamaño ligeramente más pequeño */
+    color: #777777; /* Texto en gris */
+    margin-bottom: 15px;
+}
+
+/* Subdatos (autor y fecha) */
+.subdatos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Espacia autor y fecha a los lados opuestos */
+    font-size: 0.9rem; /* Tamaño ligeramente más pequeño */
+    color: #777777; /* Texto en gris */
+    margin-bottom: 15px;
+}
+
+.autor {
+    display: flex;
+    align-items: flex-start;
+    font-style: italic; /* Texto en cursiva para destacar al autor */
+}
+
+.fecha {
+    display: flex;
+    flex-direction: row-reverse;
+    font-weight: bold; /* Negrita para la fecha */
+
+}
+
+/* Descripción */
+.descripcion {
+    font-size: 1rem; /* Tamaño del texto */
+    line-height: 1.5; /* Altura de línea para mejor legibilidad */
+    color: #555555; /* Color gris oscuro */
+    margin: 0; /* Sin margen adicional */
+}

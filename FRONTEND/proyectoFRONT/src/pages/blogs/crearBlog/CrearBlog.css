@@ -44,11 +44,17 @@
     gap: 10px;
     align-items: flex-start;
 }
+.formulario .autorForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
 
 .contenido-imagen{
-    display: flex;
+    display: row;
     padding-top: 50px;
-    gap: 30px;
+    
 }
 
 

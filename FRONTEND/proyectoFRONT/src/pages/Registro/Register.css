@@ -1,0 +1,65 @@
+/* Contenedor general */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Ocupa toda la altura de la pantalla */
+}
+
+.formulario{
+    padding: 10px 50px 50px 50px ;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+/* Título de la tarjeta */
+h2 {
+    font-size: 24px;
+    color: #ffffff;
+    
+}
+
+/* Estilo para los labels */
+label {
+    display: block;
+    font-size: 16px;
+    color: #e9e8e8;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Estilo para los inputs */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #ffffff;
+    transition: border 0.3s ease;
+}
+
+
+
+/* Estilo para el botón de login */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #010911;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #301ea9;
+}
+
+

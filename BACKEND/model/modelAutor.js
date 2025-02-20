@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
 
-
-const blogSchema = new mongoose.Schema(
+const AutorSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true, unique: true }, // Cambié "require" a "required"
-    
-  },
-  { timestamps: true } // Agregado para tener las fechas de creación y actualización automáticas
-);
+    id: { type: String, require: true, unique: true }, // Cambié "require" a "required"
+    nombre:{ type: String, require: true},
+    biografia:{ type: String, require: true},
+    fechaNacimiento:{ type: String, require: true},
+    redSocial:{ type: String, require: true},
+    fotoPerfil:{ type: String, require: false},
+    isHabilitado:{ type: Boolean, default: true}
+  });
 
-const Blog = mongoose.model("blog", blogSchema);
+const Autor = mongoose.model("Autor", AutorSchema);
 
-export default Blog;
+export default Autor;

@@ -1,99 +1,123 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import "./CrearBlog.css"
-const backurl= import.meta.env.VITE_BACK_URL;
+import { useState } from "react";
+import "./CrearBlog.css";
 
+const backurl = import.meta.env.VITE_BACK_URL;
 
 const CrearBlog = () => {
-    const navigate = useNavigate();
-    const [titulo, setTitulo]=useState("")
-    const [descripcion, setDescripcion]=useState("")
-    const [contenido, setContenido]=useState("")
-    const [imagen, setImagen]=useState("")
+  const navigate = useNavigate();
+  const [titulo, setTitulo] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [contenido, setContenido] = useState("");
+  const [imagen, setImagen] = useState(null); 
+  const [autor, setAutor] = useState("");
+  const [error, setError] = useState(""); 
 
-    useEffect(()=>{
-        console.log(titulo,descripcion,contenido,imagen);
-    }, [titulo,descripcion,contenido,imagen]);
+  const handleImageChange = (e) => {
+    setImagen(e.target.files[0]);
+  };
 
-    const handleCrear = async (e) => {
-        e.preventDefault();
-       
-        const blog ={
-            titulo: titulo,
-            descripcion: descripcion,
-            contenido: contenido,
-            imagen: imagen,
-        }
-        
-        await fetchback(blog)
-        console.log(blog)
-        navigate("/misblogs");
+  const handleCrear = async (e) => {
+    e.preventDefault();
 
-    };
-
-    
-    
-    const handleVolver = () => {
-        navigate("/misblogs");
-    };
-    
-    
-    const fetchback= async(blog) =>{
-        const response = await fetch( `${backurl}blogs/`,{
-            method:"POST",
-            body: JSON.stringify(blog),
-            headers:{"Content-Type":"application/json"},
-        });
-        const data = await response.json();
-        console.log(data);
+    const formData = new FormData();
+    formData.append("titulo", titulo);
+    formData.append("descripcion", descripcion);
+    formData.append("contenido", contenido);
+    formData.append("autor", autor);
+    if (imagen) {
+      formData.append("imagen", imagen); 
     }
 
-    return (
-        <div className="contenedorCrear">
-            <h1>Crear Blog</h1>
-            <div className="formulario">
-                <form onSubmit={(e)=> handleCrear(e)}>
-                
-                <div className="titulo-descripcion">
-                    
-                    <div className="titulo">
-                    
-                        <label htmlFor="titulo">Titulo</label>    
-                        <input type="text" id="titulo" onChange={(e)=> setTitulo(e.target.value)} />
+    const response = await fetch(`${backurl}blogs/`, {
+      method: "POST",
+      body: formData,
+    });
 
-                    </div>
-                
-                     <div className="descrip">
-                    <label htmlFor="descripcion">Descripcion</label>    
-                    <input type="text" id="descripcion" onChange={(e)=> setDescripcion(e.target.value)} />   
-                </div>
-                
-                </div>
-                <div className="contenido-imagen">
-                    
-                    <div className="contenidoForm">
-                        <label htmlFor="contenido">Contenido</label>    
-                        <textarea type="text" id="contenido" onChange={(e)=> setContenido(e.target.value)} />
-                    </div>
-                    
-                    <div className="imagenForm">
-                        <label htmlFor="imagen">Imagen</label>    
-                        <input type="text" id="imagen" onChange={(e)=> setImagen(e.target.value)} />
-                    </div>
+    const data = await response.json();
+    if (response.ok) {
+      navigate("/misblogs");
+    } else {
+      setError(data.error || "Hubo un problema al crear el blog.");
+    }
+  };
 
-                </div>
-                
-                <div className="botones">
-                    <button onClick={handleVolver}>Volver</button>
-                    <button type="submit">Crear</button>
+  const handleVolver = () => {
+    navigate("/misblogs");
+  };
 
-                </div>
-                </form>  
+  return (
+    <div className="contenedorCrear">
+      <h1>Crear Blog</h1>
+      <div className="formulario">
+        <form onSubmit={handleCrear}>
+          <div className="titulo-descripcion">
+            <div className="titulo">
+              <label htmlFor="titulo">Titulo</label>
+              <input
+                type="text"
+                id="titulo"
+                value={titulo}
+                onChange={(e) => setTitulo(e.target.value)}
+              />
             </div>
-            
-                
-        </div>
-    );
+
+            <div className="descrip">
+              <label htmlFor="descripcion">Descripcion</label>
+              <input
+                type="text"
+                id="descripcion"
+                value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="contenido-imagen">
+            <div className="contenidoForm">
+              <label htmlFor="contenido">Contenido</label>
+              <textarea
+                id="contenido"
+                value={contenido}
+                onChange={(e) => setContenido(e.target.value)}
+              />
+            </div>
+
+            <div className="imagenForm">
+              <label htmlFor="imagen">Imagen</label>
+              <input type="file" id="imagen" onChange={handleImageChange} />
+              {imagen && (
+                <img
+                  src={URL.createObjectURL(imagen)} 
+                  alt="Vista previa"
+                  style={{ width: "150px", marginTop: "10px" }}
+                />
+              )}
+            </div>
+
+            <div className="autorForm">
+              <label htmlFor="autor">Autor</label>
+              <input
+                type="text"
+                id="autor"
+                value={autor}
+                onChange={(e) => setAutor(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {error && <div className="error-message">{error}</div>}
+
+          <div className="botones">
+            <button type="button" onClick={handleVolver}>
+              Volver
+            </button>
+            <button type="submit">Crear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default CrearBlog;

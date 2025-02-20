@@ -6,10 +6,11 @@ import cors from "cors";
 import connectDB from "./database.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger.json" assert {type: "json"};
-
+import routerAutores from "./router/routerAutores.js";
+import routerUsuario from "./router/routerUsuario.js"
 // Cargar variables de entorno
 dotenv.config();
-console.log("ESTE EEEEEEESSSSSSSS", process.env.MONGO_URL);
+console.log("Url:", process.env.MONGO_URL);
 
 connectDB();
 
@@ -18,33 +19,35 @@ const PORT = process.env.PORT;
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174", // Agregá esta línea
-      "https://proyecto-utn-nvbc.vercel.app/",
-    ],
+    origin: "*", // Permitir todos los orígenes
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "x-refresh-token"],
     credentials: true,
   })
 );
+
+
 
 // Middleware para analizar JSON
 app.use(express.json());
 
 // Rutas
 app.use("/vehiculos", routerVehiculos);
-//app.use("/user", routerVehiculos);
 app.use("/blogs", routerBlogs);
+app.use("/autores",routerAutores)
 app.use("/docs", swaggerUi.serve,swaggerUi.setup(swaggerDocument));
+app.use("/auth", routerUsuario);
+app.use('/uploads', express.static('uploads')); // Sirve la carpeta uploads
 
-// Manejo de rutas inexistentes
+app.get("/protected",(req,res)=>{
+  res.json({message:"Acceso permitido",user:req.user})
+})
+
 app.use((req, res) => {
   res.status(404).json({ error: "Error 404: Recurso no encontrado" });
 });
 
-// Conexión a la base de datos
 
-// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en: http://localhost:${PORT}`);
 });

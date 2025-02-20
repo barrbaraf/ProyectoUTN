@@ -1,0 +1,61 @@
+.contenedorCrear{
+    display: flex;
+    flex-direction: column;
+    margin: 90px 50px 50px 50px ;
+    align-items: center;
+    
+}
+
+.formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #01214cd6;
+    color: rgb(255, 255, 255);
+    margin: 400px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    
+}
+
+
+.formulario .titulo{
+    display: flex;
+    gap: 10px;
+}
+
+.formulario .descrip{
+    display: flex;
+    gap: 10px;
+}
+
+.formulario .titulo-descripcion{
+    display: flex;
+    gap: 60px;
+}
+
+.formulario .contenidoForm{
+    display: flex;
+    gap: 10px;
+}
+
+.formulario .imagenForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.contenido-imagen{
+    display: flex;
+    padding-top: 50px;
+    gap: 30px;
+}
+
+
+.botones{
+    display: flex;
+    justify-content: space-around;    
+    gap: 10px;
+    padding-top: 50px;
+    
+}
