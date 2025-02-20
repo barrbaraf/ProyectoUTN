@@ -4,9 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
     "dev": "dotenv -e .dev.env nodemon index.js",
     "prod": "dotenv -e .prod.env nodemon index.js",
-    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
